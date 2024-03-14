@@ -125,3 +125,4 @@ C:\Users\lorincostley\source\repos\mission10pt2_costley\backend\APIfun\bin\Debug
 C:\Users\lorincostley\source\repos\mission10pt2_costley\backend\APIfun\bin\Debug\net8.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\lorincostley\source\repos\mission10pt2_costley\backend\APIfun\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\lorincostley\source\repos\mission10pt2_costley\backend\APIfun\obj\Debug\net8.0\APIfun.csproj.Up2Date
+C:\Users\lorincostley\source\repos\mission10pt2_costley\backend\APIfun\obj\Debug\net8.0\APIfun.sourcelink.json

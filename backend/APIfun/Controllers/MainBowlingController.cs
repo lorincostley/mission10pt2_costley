@@ -1,6 +1,7 @@
 using APIfun.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace APIfun.Controllers
 {
@@ -15,11 +16,28 @@ namespace APIfun.Controllers
             _bowlingRepository = temp;
         }
         [HttpGet]
-        public IEnumerable<Bowler> Get()
+        public IEnumerable<BowlerWithTeam> Get()
         {
-            var bowlerData = _bowlingRepository.Bowlers.ToArray();
+            var bowlersWithTeam = from bowler in _bowlingRepository.Bowlers
+                                  join team in _bowlingRepository.Teams on bowler.TeamId equals team.TeamId
+                                  where team.TeamName is "Marlins" or "Sharks"
+                                  select new BowlerWithTeam
+                                  {
+                                      BowlerId = bowler.BowlerId,
+                                      BowlerFirstName = bowler.BowlerFirstName,
+                                      BowlerLastName = bowler.BowlerLastName,
+                                      BowlerMiddleInit = bowler.BowlerMiddleInit,
+                                      BowlerAddress = bowler.BowlerAddress,
+                                      BowlerCity = bowler.BowlerCity,
+                                      BowlerState = bowler.BowlerState,
+                                      BowlerZip = bowler.BowlerZip,
+                                      BowlerPhoneNumber = bowler.BowlerPhoneNumber,
+                                      TeamName = team.TeamName
+                                  };
 
-            return bowlerData;
+            var bowlerData1 = bowlersWithTeam.ToArray();
+
+            return bowlerData1;
         }
     }
 }
